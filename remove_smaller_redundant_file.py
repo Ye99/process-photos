@@ -40,11 +40,13 @@ def process_folder(folder_path_pattern):
             if source_file_size > file_name_without_1_file_size:
                 os.remove(file_name_without_1_path_file_name)
                 without_1_file_deletion_count += 1
-                logging.info(f"Deleted {file_name_without_1_path_file_name}")
+                logging.info(f"Deleted {file_name_without_1_path_file_name}, size {file_name_without_1_file_size}; "
+                             f"Keep {file} size {source_file_size}")
             else:
                 os.remove(file)
                 with_1_file_deletion_count += 1
-                logging.info(f"Deleted {file}")
+                logging.info(f"Deleted {file}, size {source_file_size}; "
+                             f"Keep {file_name_without_1_file_size} size {file_name_without_1_path_file_name}")
 
             deleted_file_count += 1
         else:
