@@ -41,22 +41,23 @@ def process_folder(folder_path_pattern):
                 os.remove(file_name_without_1_path_file_name)
                 without_1_file_deletion_count += 1
                 logging.info(f"Deleted {file_name_without_1_path_file_name}, size {file_name_without_1_file_size}; "
-                             f"Keep {file} size {source_file_size}")
+                             f"Kept {source_file_size} size {file}")
             else:
                 os.remove(file)
                 with_1_file_deletion_count += 1
                 logging.info(f"Deleted {file}, size {source_file_size}; "
-                             f"Keep {file_name_without_1_file_size} size {file_name_without_1_path_file_name}")
+                             f"Kept {file_name_without_1_file_size} size, {file_name_without_1_path_file_name}")
 
             deleted_file_count += 1
         else:
             no_match_count += 1
 
-    logging.info(f"Total file {deleted_file_count}")
     logging.info(f"{no_match_count} _1 files has no matching file")
+    logging.info(f"Total deleted file count {deleted_file_count}")
     logging.info(f"Deleted *_1 count: {with_1_file_deletion_count}")
     logging.info(f"Deleted without 1 count: {without_1_file_deletion_count}")
 
 
 if __name__ == '__main__':
     process_folder(to_be_processed_folder)
+    print("Done!")
