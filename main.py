@@ -3,7 +3,8 @@ import os
 from dateutil import parser
 import shutil
 
-output_folder = "/home/ye/test/"
+# Points to parent folder of the to be created 2016, 2017 etc folders.
+output_folder = "/home/ye/2017_2018_Master/"
 
 
 def extract_date(file_name):
@@ -46,14 +47,15 @@ def process_file(source_path_file_name):
                 shutil.move(source_path_file_name, target_path_file_name)
                 print(f"overwrite target file {target_path_file_name} with larger source file {source_path_file_name}")
             else:
-                print(f"skip source file {source_path_file_name} because existing target file is larger")
+                print(f"skip and remove source file {source_path_file_name} because existing target file is larger")
+                os.remove(source_path_file_name)
         else:
             shutil.move(source_path_file_name, target_path_file_name)
             print(f"moved source file {source_path_file_name} to {target_path_file_name}")
 
 
 # Folder to be processed. See https://docs.python.org/3/library/glob.html for format.
-folder_path = "/home/ye/test/2018_09_08/*"
+folder_path = "/home/ye/2017_2018_Master/2016/2016 2月至7月 时丽君拍的/*"
 
 
 def process_folder(folder_path_pattern):
